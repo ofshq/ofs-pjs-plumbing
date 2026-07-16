@@ -1,17 +1,41 @@
 backend:
   name: git-gateway
   branch: main
-media_folder: "assets/images/uploads"
-public_folder: "/assets/images/uploads"
+
+site_url: https://ofs-pjs-plumbing.netlify.app
+display_url: https://ofs-pjs-plumbing.netlify.app
+logo_url: /assets/images/pjs-plumbing-logo.jpeg
+
+media_folder: assets/images/uploads
+public_folder: /assets/images/uploads
+publish_mode: simple
+
 collections:
-  - name: "projects"
-    label: "Projects"
-    folder: "content/projects"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {label: "Project title", name: "title", widget: "string"}
-      - {label: "Category", name: "category", widget: "select", options: ["Water Heaters", "Bathrooms", "Toilets", "Filtration", "Repairs"]}
-      - {label: "Before photo", name: "before_image", widget: "image", required: false}
-      - {label: "After photo", name: "after_image", widget: "image"}
-      - {label: "Description", name: "body", widget: "markdown"}
+  - name: website
+    label: Website
+    files:
+      - name: project_gallery
+        label: Project Photos
+        file: content/gallery.json
+        format: json
+        fields:
+          - label: Projects
+            name: projects
+            widget: list
+            summary: "{{fields.title}}"
+            minimize_collapsed: true
+            fields:
+              - label: Project title
+                name: title
+                widget: string
+              - label: Short description
+                name: description
+                widget: string
+              - label: Photo
+                name: image
+                widget: image
+                hint: Use a clear landscape photo. Keep uploads under 5 MB when possible.
+              - label: Photo description for accessibility
+                name: alt
+                widget: string
+                hint: Briefly describe what is shown in the photo.
