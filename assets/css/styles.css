@@ -478,3 +478,30 @@ button, input, select, textarea { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
 }
+/* Transparent header logo */
+.brand {
+  width: 170px;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.brand img {
+  height: 118px;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .brand {
+    width: 110px;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .brand img {
+    height: 88px;
+  }
+}
